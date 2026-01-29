@@ -12,10 +12,12 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '20.x'
-  displayName: 'Install Node.js'
+    versionSpec: '16.x'
+  displayName: 'Install Node.js 16'
 
 - script: |
+    rm -rf node_modules package-lock.json
     npm install
     npm run build
-  displayName: 'npm install and build'
+  displayName: 'Install and Build'
+
