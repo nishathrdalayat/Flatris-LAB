@@ -1,0 +1,22 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+  displayName: 'Use Node.js 16'
+
+- script: |
+    node -v
+    npm -v
+  displayName: 'Verify Node version'
+
+- script: |
+    rm -rf node_modules package-lock.json
+    npm install
+    npm run build
+  displayName: 'Install and build'
